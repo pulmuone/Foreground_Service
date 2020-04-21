@@ -158,7 +158,7 @@ namespace ServicesDemo3
 			builder.SetContentText(Resources.GetString(Resource.String.notification_text));
 			builder.SetSmallIcon(Resource.Drawable.ic_stat_name);
 			builder.SetContentIntent(BuildIntentToShowMainActivity());
-			builder.SetOngoing(true);
+			//builder.SetOngoing(true); //Notification 삭제 안되게..
 			//notification에 작업 버튼 추가
 			//builder.AddAction(BuildRestartTimerAction());
 			//builder.AddAction(BuildStopServiceAction());
