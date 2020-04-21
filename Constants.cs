@@ -3,7 +3,7 @@ namespace ServicesDemo3
 {
 	public static class Constants
 	{
-		public const int DELAY_BETWEEN_LOG_MESSAGES = 3000; // milliseconds
+		public const int DELAY_BETWEEN_LOG_MESSAGES = 1000; // milliseconds
 		public const int SERVICE_RUNNING_NOTIFICATION_ID = 10000;
 		public const string SERVICE_STARTED_KEY = "has_service_been_started";
 		public const string BROADCAST_MESSAGE_KEY = "broadcast_message";
