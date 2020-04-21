@@ -15,7 +15,7 @@ namespace ServicesDemo3
 	/// tray while the service is active.
 	/// </summary>
 	[Service]
-	public class TimestampService : Service
+	public class TimestampService : Service, IGetTimestamp
 	{
 		static readonly string TAG = typeof(TimestampService).FullName;
 
@@ -23,6 +23,8 @@ namespace ServicesDemo3
 		bool isStarted;
 		Handler handler;
 		Action runnable;
+
+		public IBinder Binder { get; private set; }
 
 		public override void OnCreate()
 		{
@@ -99,10 +101,19 @@ namespace ServicesDemo3
 
 		public override IBinder OnBind(Intent intent)
 		{
-			// Return null because this is a pure started service. A hybrid service would return a binder that would
-			// allow access to the GetFormattedStamp() method.
-			return null;
+			// This method must always be implemented
+			Log.Debug(TAG, "OnBind");
+			this.Binder = new TimestampBinder(this);
+			return this.Binder;
 		}
+
+		public override bool OnUnbind(Intent intent)
+		{
+			// This method is optional to implement
+			Log.Debug(TAG, "OnUnbind");
+			return base.OnUnbind(intent);
+		}
+
 
 
 		public override void OnDestroy()
@@ -118,6 +129,7 @@ namespace ServicesDemo3
 			var notificationManager = (NotificationManager)GetSystemService(NotificationService);
 			notificationManager.Cancel(Constants.SERVICE_RUNNING_NOTIFICATION_ID);
 
+			Binder = null;
 			timestamper = null;
 			isStarted = false;
 			base.OnDestroy();
@@ -127,11 +139,11 @@ namespace ServicesDemo3
 		/// This method will return a formatted timestamp to the client.
 		/// </summary>
 		/// <returns>A string that details what time the service started and how long it has been running.</returns>
-		string GetFormattedTimestamp()
-		{
+		//string GetFormattedTimestamp()
+		//{
 			
-			return timestamper?.GetFormattedTimestamp();
-		}
+		//	return timestamper?.GetFormattedTimestamp();
+		//}
 
 		void RegisterForegroundService()
 		{
@@ -158,7 +170,7 @@ namespace ServicesDemo3
 			builder.SetContentText(Resources.GetString(Resource.String.notification_text));
 			builder.SetSmallIcon(Resource.Drawable.ic_stat_name);
 			builder.SetContentIntent(BuildIntentToShowMainActivity());
-			//builder.SetOngoing(true); //Notification 삭제 안되게..
+			builder.SetOngoing(false); //Notification 삭제 안되게..
 			//notification에 작업 버튼 추가
 			//builder.AddAction(BuildRestartTimerAction());
 			//builder.AddAction(BuildStopServiceAction());
@@ -218,6 +230,11 @@ namespace ServicesDemo3
 														  stopServicePendingIntent);
 			return builder.Build();
 
+		}
+
+		public string GetFormattedTimestamp()
+		{
+			return timestamper?.GetFormattedTimestamp();
 		}
 	}
 }

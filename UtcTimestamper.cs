@@ -6,7 +6,7 @@ using Android.OS;
 
 namespace ServicesDemo3
 {
-	public class UtcTimestamper
+	public class UtcTimestamper : IGetTimestamp
 	{
 		DateTime startTime;
 		bool wasReset = false;

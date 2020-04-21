@@ -141,10 +141,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IGetTimestamp.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimestampBinder.cs" />
     <Compile Include="TimestampService.cs" />
+    <Compile Include="TimestampServiceConnection.cs" />
     <Compile Include="UtcTimestamper.cs" />
     <Compile Include="Constants.cs" />
   </ItemGroup>

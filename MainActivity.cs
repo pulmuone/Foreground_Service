@@ -14,9 +14,12 @@ namespace ServicesDemo3
 
 		Button stopServiceButton;
 		Button startServiceButton;
+		Button timestampButton;
 		Intent startServiceIntent;
 		Intent stopServiceIntent;
 		bool isStarted = false;
+		TimestampServiceConnection serviceConnection;
+		internal TextView timestampMessageTextView;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -24,8 +27,6 @@ namespace ServicesDemo3
 
 			SetContentView(Resource.Layout.Main);
 			OnNewIntent(this.Intent);
-
-
 
 			if (savedInstanceState != null)
 			{
@@ -53,6 +54,26 @@ namespace ServicesDemo3
 				startServiceButton.Enabled = true;
 				stopServiceButton.Enabled = false;
 			}
+
+			timestampButton = FindViewById<Button>(Resource.Id.get_timestamp_button);
+			timestampButton.Click += GetTimestampButton_Click;
+
+			timestampMessageTextView = FindViewById<TextView>(Resource.Id.message_textview);
+		}
+
+		protected override void OnStart()
+		{
+			base.OnStart();
+			if (serviceConnection == null)
+			{
+				serviceConnection = new TimestampServiceConnection();
+			}
+		}
+
+		protected override void OnStop()
+		{
+			DoUnBindService();
+			base.OnStop();
 		}
 
 		protected override void OnNewIntent(Intent intent)
@@ -85,8 +106,35 @@ namespace ServicesDemo3
 			//StopService(startServiceIntent);
 			base.OnDestroy();
 		}
+
+		void DoBindService()
+		{
+			Intent serviceToStart = new Intent(this, typeof(TimestampService));
+			BindService(serviceToStart, serviceConnection, Bind.AutoCreate);
+			timestampMessageTextView.Text = "";
+		}
+
+		void DoUnBindService()
+		{
+			UnbindService(serviceConnection);
+			timestampMessageTextView.Text = "";
+		}
+
+		void GetTimestampButton_Click(object sender, System.EventArgs e)
+		{
+			if (serviceConnection.IsConnected)
+			{
+				timestampMessageTextView.Text = serviceConnection.Binder.Service.GetFormattedTimestamp();
+			}
+			else
+			{
+				timestampMessageTextView.SetText(Resource.String.service_not_connected);
+			}
+		}
+
 		void StopServiceButton_Click(object sender, System.EventArgs e)
 		{
+			timestampButton.Enabled = false;
 			stopServiceButton.Click -= StopServiceButton_Click;
 			stopServiceButton.Enabled = false;
 
@@ -96,10 +144,13 @@ namespace ServicesDemo3
 
 			startServiceButton.Click += StartServiceButton_Click;
 			startServiceButton.Enabled = true;
+
+			DoUnBindService();
 		}
 
 		void StartServiceButton_Click(object sender, System.EventArgs e)
 		{
+			timestampButton.Enabled = true;
 			startServiceButton.Enabled = false;
 			startServiceButton.Click -= StartServiceButton_Click;
 
@@ -119,6 +170,8 @@ namespace ServicesDemo3
 			stopServiceButton.Click += StopServiceButton_Click;
 
 			stopServiceButton.Enabled = true;
+
+			DoBindService();
 		}
 	}
 

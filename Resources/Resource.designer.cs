@@ -366,88 +366,94 @@ namespace ServicesDemo3
 			public const int forever = 2131034134;
 			
 			// aapt resource value: 0x7F050017
-			public const int icon = 2131034135;
+			public const int get_timestamp_button = 2131034135;
 			
 			// aapt resource value: 0x7F050018
-			public const int icon_group = 2131034136;
+			public const int icon = 2131034136;
 			
 			// aapt resource value: 0x7F050019
-			public const int info = 2131034137;
+			public const int icon_group = 2131034137;
 			
 			// aapt resource value: 0x7F05001A
-			public const int italic = 2131034138;
+			public const int info = 2131034138;
 			
 			// aapt resource value: 0x7F05001B
-			public const int left = 2131034139;
+			public const int italic = 2131034139;
 			
 			// aapt resource value: 0x7F05001C
-			public const int line1 = 2131034140;
+			public const int left = 2131034140;
 			
 			// aapt resource value: 0x7F05001D
-			public const int line3 = 2131034141;
+			public const int line1 = 2131034141;
 			
 			// aapt resource value: 0x7F05001E
-			public const int media_actions = 2131034142;
+			public const int line3 = 2131034142;
 			
 			// aapt resource value: 0x7F05001F
-			public const int none = 2131034143;
+			public const int media_actions = 2131034143;
 			
 			// aapt resource value: 0x7F050020
-			public const int normal = 2131034144;
+			public const int message_textview = 2131034144;
 			
 			// aapt resource value: 0x7F050021
-			public const int notification_background = 2131034145;
+			public const int none = 2131034145;
 			
 			// aapt resource value: 0x7F050022
-			public const int notification_main_column = 2131034146;
+			public const int normal = 2131034146;
 			
 			// aapt resource value: 0x7F050023
-			public const int notification_main_column_container = 2131034147;
+			public const int notification_background = 2131034147;
 			
 			// aapt resource value: 0x7F050024
-			public const int right = 2131034148;
+			public const int notification_main_column = 2131034148;
 			
 			// aapt resource value: 0x7F050025
-			public const int right_icon = 2131034149;
+			public const int notification_main_column_container = 2131034149;
 			
 			// aapt resource value: 0x7F050026
-			public const int right_side = 2131034150;
+			public const int right = 2131034150;
 			
 			// aapt resource value: 0x7F050027
-			public const int start = 2131034151;
+			public const int right_icon = 2131034151;
 			
 			// aapt resource value: 0x7F050028
-			public const int start_timestamp_service_button = 2131034152;
+			public const int right_side = 2131034152;
 			
 			// aapt resource value: 0x7F050029
-			public const int status_bar_latest_event_content = 2131034153;
+			public const int start = 2131034153;
 			
 			// aapt resource value: 0x7F05002A
-			public const int stop_timestamp_service_button = 2131034154;
+			public const int start_timestamp_service_button = 2131034154;
 			
 			// aapt resource value: 0x7F05002B
-			public const int tag_transition_group = 2131034155;
+			public const int status_bar_latest_event_content = 2131034155;
 			
 			// aapt resource value: 0x7F05002C
-			public const int tag_unhandled_key_event_manager = 2131034156;
+			public const int stop_timestamp_service_button = 2131034156;
 			
 			// aapt resource value: 0x7F05002D
-			public const int tag_unhandled_key_listeners = 2131034157;
+			public const int tag_transition_group = 2131034157;
 			
 			// aapt resource value: 0x7F05002E
-			public const int text = 2131034158;
+			public const int tag_unhandled_key_event_manager = 2131034158;
 			
 			// aapt resource value: 0x7F05002F
-			public const int text2 = 2131034159;
+			public const int tag_unhandled_key_listeners = 2131034159;
 			
 			// aapt resource value: 0x7F050030
-			public const int time = 2131034160;
+			public const int text = 2131034160;
 			
 			// aapt resource value: 0x7F050031
-			public const int title = 2131034161;
+			public const int text2 = 2131034161;
 			
 			// aapt resource value: 0x7F050032
-			public const int top = 2131034162;
+			public const int time = 2131034162;
+			
+			// aapt resource value: 0x7F050033
+			public const int title = 2131034163;
+			
+			// aapt resource value: 0x7F050034
+			public const int top = 2131034164;
 			
 			static Id()
 			{
@@ -565,25 +571,31 @@ namespace ServicesDemo3
 			public const int app_name = 2131296257;
 			
 			// aapt resource value: 0x7F090002
-			public const int notification_text = 2131296258;
+			public const int get_timestamp_button_text = 2131296258;
 			
 			// aapt resource value: 0x7F090003
-			public const int restart_timer = 2131296259;
+			public const int notification_text = 2131296259;
 			
 			// aapt resource value: 0x7F090004
-			public const int restart_timestamp_service_button_text = 2131296260;
+			public const int restart_timer = 2131296260;
 			
 			// aapt resource value: 0x7F090005
-			public const int service_started = 2131296261;
+			public const int restart_timestamp_service_button_text = 2131296261;
 			
 			// aapt resource value: 0x7F090006
-			public const int status_bar_notification_info_overflow = 2131296262;
+			public const int service_not_connected = 2131296262;
 			
 			// aapt resource value: 0x7F090007
-			public const int stop_service = 2131296263;
+			public const int service_started = 2131296263;
 			
 			// aapt resource value: 0x7F090008
-			public const int stop_timestamp_service_button_text = 2131296264;
+			public const int status_bar_notification_info_overflow = 2131296264;
+			
+			// aapt resource value: 0x7F090009
+			public const int stop_service = 2131296265;
+			
+			// aapt resource value: 0x7F09000A
+			public const int stop_timestamp_service_button_text = 2131296266;
 			
 			static String()
 			{

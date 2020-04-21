@@ -8,4 +8,6 @@
 	<string name="notification_text">The started service is running.</string>
 	<string name="restart_timer">Restart Timer</string>
 	<string name="stop_service">Stop Service</string>
+	<string name="get_timestamp_button_text">Get Timestamp from Service</string>
+	<string name="service_not_connected">Please wait, the service is not connected.</string>
 </resources>
