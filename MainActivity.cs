@@ -72,7 +72,7 @@ namespace ServicesDemo3
 
 		protected override void OnStop()
 		{
-			DoUnBindService();
+			//DoUnBindService();
 			base.OnStop();
 		}
 
