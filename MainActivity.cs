@@ -12,6 +12,8 @@ namespace ServicesDemo3
 	{
 		static readonly string TAG = typeof(MainActivity).FullName;
 
+		TimeReceiver receiver;
+
 		Button stopServiceButton;
 		Button startServiceButton;
 		Button timestampButton;
@@ -24,6 +26,8 @@ namespace ServicesDemo3
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
+
+			receiver = new TimeReceiver();
 
 			SetContentView(Resource.Layout.Main);
 			OnNewIntent(this.Intent);
@@ -59,6 +63,18 @@ namespace ServicesDemo3
 			timestampButton.Click += GetTimestampButton_Click;
 
 			timestampMessageTextView = FindViewById<TextView>(Resource.Id.message_textview);
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+			RegisterReceiver(receiver, new IntentFilter(Constants.NOTIFICATION_BROADCAST_ACTION));
+		}
+
+		protected override void OnPause()
+		{
+			UnregisterReceiver(receiver);
+			base.OnPause();
 		}
 
 		protected override void OnStart()

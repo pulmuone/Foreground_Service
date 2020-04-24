@@ -47,9 +47,10 @@ namespace ServicesDemo3
 									string msg = timestamper.GetFormattedTimestamp();
 									Log.Debug(TAG, "-------------");
 									Log.Debug(TAG, msg);
-									//Intent i = new Intent(Constants.NOTIFICATION_BROADCAST_ACTION);
-									//i.PutExtra(Constants.BROADCAST_MESSAGE_KEY, msg);
+									Intent i = new Intent(Constants.NOTIFICATION_BROADCAST_ACTION);
+									i.PutExtra(Constants.BROADCAST_MESSAGE_KEY, msg);
 									//Android.Support.V4.Content.LocalBroadcastManager.GetInstance(this).SendBroadcast(i);
+									SendBroadcast(i);
 									handler.PostDelayed(runnable, Constants.DELAY_BETWEEN_LOG_MESSAGES);
 								}
 							});
