@@ -43,7 +43,6 @@ namespace ServicesDemo3
 			stopServiceIntent = new Intent(this, typeof(TimestampService));
 			stopServiceIntent.SetAction(Constants.ACTION_STOP_SERVICE);
 
-
 			stopServiceButton = FindViewById<Button>(Resource.Id.stop_timestamp_service_button);
 			startServiceButton = FindViewById<Button>(Resource.Id.start_timestamp_service_button);
 			if (isStarted)
